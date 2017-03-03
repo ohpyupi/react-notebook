@@ -9,8 +9,22 @@ export default class CommentBox extends React.Component {
 		super();
 		this.state = {
 			comments: [
-				{id: 1, author: 'Hoseong', body: 'Hello World',},
-				{id: 2, author: 'Sri', body: 'We can do it!',},
+				{
+					id: 1, 
+					name: {
+						first: 'Hoseong',
+						last: 'Lee',
+					}, 
+					subject: 'Supergentle Company',
+					body: 'We will lead the world.',
+					date: '2015-12-12',
+					time: '11:10 PM',
+					contact: {
+						email: 'hlee@zoozler.com',
+						phone: '123) 123 - 1234',
+						address: 'Seoul, Republic of Korea',
+					},
+				},
 			],
 		};
 	}
@@ -18,15 +32,18 @@ export default class CommentBox extends React.Component {
 	render() {
 		return (
 			<div className='comment-box'>
-				<CommentForm/>
+				<CommentForm addComment={(comment)=>this._addComment(comment)}/>
 				{this.state.comments.map(comment=>
-					<Comment author={comment.author} body={comment.body} key={comment.id}/>
+					<Comment key={comment.id} comment={comment}/>
 				)}
 			</div>
 		);
 	}
 	
-	_deleteComment(comment) {
-		
+	_addComment(comment) {
+		let comments = this.state.comments;
+		comment = JSON.parse(JSON.stringify(comment));
+		comment.id = this.state.comments.length+1;
+		this.setState({comments: this.state.comments.concat(comment)});
 	}
 }
