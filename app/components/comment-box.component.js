@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CommentForm from './CommentForm';
-import Comment from './Comment';
+import CommentForm from './comment-form.component';
+import Comment from './comment.component';
 
 import axios from 'axios';
 
