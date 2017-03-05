@@ -1,17 +1,9 @@
-import Home from './scenes/home';
-import Login from './scenes/login';
+import {HomeRoutes} from './scenes/home';
+import {AuthRoutes} from './scenes/auth';
 
 const routes = [
-	{
-		name: 'home',
-		url: '/',
-		component: Home,
-	},
-	{
-		name: 'login',
-		url: '/login',
-		component: Login,
-	},
+	...HomeRoutes,
+	...AuthRoutes,
 ];
 
 export {routes}

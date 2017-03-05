@@ -5,8 +5,6 @@ import ReactDOM from 'react-dom';
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
 import {routes} from './app.config';
 
-import Home from './scenes/home';
-
 ReactDOM.render(
 	<UIRouter plugins={[pushStateLocationPlugin]} states={routes}>
 		<UIView/>

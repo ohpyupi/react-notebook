@@ -5,6 +5,7 @@ React notebook app for learning purpose.
 * Comment Box, Comment Form, Comment components integrated.
 * Date fetching through React's life cycle.
 * ajax request feautre implemented, utilizing Axios.
+* ui-router integrated.
 
 ## To be updated
 * MongoDB integration

@@ -1,6 +1,13 @@
 import React from 'react';
+import {UIRouter} from 'ui-router-react';
 
-export default class Login extends React.Component {
+export default class Auth extends React.Component {
+	constructor() {
+		super();
+	}
+	componentWillMount() {
+		this.stateService = this.props.transition.router.stateService;
+	}
 	render() {
 		return (
 			<div>

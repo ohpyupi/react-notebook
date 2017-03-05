@@ -8,7 +8,7 @@ export default class Nav extends React.Component {
 		return (
 			<nav>
 				<a href='/'>Home</a>
-				<a href='/login'>Login</a>
+				<a href='/auth/login'>Login</a>
 				<a>Logout</a>
 			</nav>
 		);
