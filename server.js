@@ -4,6 +4,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 require('dotenv').load();
 const port = process.env.PORT || 3000;
+const nodeadmin = require('nodeadmin');
 const app = express();
 
 const users = require('./routes/users');
@@ -11,6 +12,7 @@ const comments = require('./routes/comments');
 const routes = require('./routes');
 
 app.use(bodyParser.json());
+app.use(nodeadmin(app));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
