@@ -10,8 +10,11 @@ React notebook app for learning purpose.
 * Express routes modules set up.
 * Installed mysql
 * Made mysql databse and an admin user.
+* MySQL integration
+* Signup page and front-end
+* nodeadmin installed.
 
 ## To be updated
-* MySQL integration
+* Create "users" table to MYSQL database.
 * Injecting security header to Axios' ajax call.
 * Authentication system (login, signin, logout, forgot password).
