@@ -1,7 +1,7 @@
 const express = require('express');
-const crypto = require('crypto');
 const router = express.Router();
 const mysql = require('mysql');
+const User = require('../models/Users');
 require('dotenv').load();
 
 const connection = mysql.createConnection({
@@ -16,17 +16,6 @@ connection.connect(err=>{
 	console.log(`connected as id ${connection.threadId}`);
 });
 
-class User {
-	constructor() {
-		this.createdAt = Date.now();
-		this.editedAt = Date.now();
-	}
-	setPassword (password) {
-		this.salt = crypto.randomBytes(16).toString('hex');
-		this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha1').toString('hex');
-	}
-}
-
 router.get('/', (req, res, next)=>{
 	res.json({message: 'Successfully connected.'});
 });
@@ -35,7 +24,13 @@ router.post('/signup', (req, res, next)=>{
 	let user = new User();
 	user.username = req.body.username;
 	user.setPassword(req.body.password);
-	console.log(user);
+	connection.query('INSERT INTO users SET ?', user, (err, results, fields)=>{
+		if (err) return next(err);
+		return res.json({
+			token: {},
+			message: 'Successfully registered.'
+		});
+	});
 });
 
 
