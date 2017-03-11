@@ -1,15 +1,18 @@
 import React from 'react';
 
-import HFunc from '../../hFunc'
+import hFunc from '../../hFunc'
 
 export default class Signup extends React.Component {
 	constructor() {
 		super();
 		this.state = {};
-		this.hFunc = new HFunc();
 	}
 	handleInputChange(e) {
 		this.props.handleInputChange(e);
+	}
+	handleSignup(e) {
+		//console.log(this.props.user);
+		this.props.handleSignup(e);
 	}
 	render() {
 		return (
@@ -31,6 +34,12 @@ export default class Signup extends React.Component {
 				<div>
 					<label>Confirm</label>
 					<input type='password' value={this.props.user.confirm} onChange={(e)=>this.handleInputChange(e)} name='confirm' required/>
+					<div>
+						<span className='error'>{this.props.error.confirm}</span>
+					</div>
+				</div>
+				<div>
+					<button type='button' onClick={e=>this.handleSignup(e)}>Submit</button>
 				</div>
 			</div>
 		);

@@ -2,7 +2,7 @@ import Auth from './auth.component';
 
 const AuthRoutes = [
 	{
-		name: 'login',
+		name: 'auth',
 		url: '/auth/:authType',
 		component: Auth,
 	},

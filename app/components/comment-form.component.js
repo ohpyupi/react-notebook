@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import HFunc from '../hFunc';
+import hfunc from '../hFunc';
 
 export default class CommentForm extends React.Component {
 	constructor() {
@@ -15,7 +15,6 @@ export default class CommentForm extends React.Component {
 		console.log();
 	}
 	componentDidMount() {
-		const hfunc = new HFunc();
 		this.refs['date'].valueAsDate = hfunc.getCleanTime();
 		this.refs['time'].valueAsDate = hfunc.getCleanTime();
 		this.timeSync = setInterval(()=>{

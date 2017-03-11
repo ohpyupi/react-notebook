@@ -1,4 +1,4 @@
-export default class HFunc {
+class HFunc {
 	constructor() {
 	}
 	getCleanTime (time) {
@@ -28,3 +28,5 @@ export default class HFunc {
 		}
 	}
 }
+
+export default new HFunc();

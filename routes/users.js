@@ -33,5 +33,12 @@ router.post('/signup', (req, res, next)=>{
 	});
 });
 
+router.post('/login', (req, res, next)=>{
+	connection.query(`select * from users where username = '${req.body.username}'`, (err, results, fields)=>{
+		if (err) return res.status(401).json({message: "Invalid Username."});
+		let user = new User(results[0]);
+		if (!user.validPassword(req.body.password)) return res.status(401).json({message: "Invalid Password."});
+	});
+});
 
 module.exports = router;
