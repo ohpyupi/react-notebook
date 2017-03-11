@@ -11,7 +11,7 @@
 		"start": "node server.js",
 		"build": "webpack",
 		"watch": "webpack --progress --colors --watch",
-		"postinstall": "webpack",
+		"heroku-postbuild": "webpack",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
