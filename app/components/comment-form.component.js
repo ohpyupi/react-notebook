@@ -42,7 +42,6 @@ export default class CommentForm extends React.Component {
 			comment: comment,
 		});
 		this.props.addComment(this.state.comment);
-		const hfunc = new HFunc();
 		for (var key in this.refs) {
 			let type = this.refs[key].type;
 			if (type === "text" || type === "textarea") {
