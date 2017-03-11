@@ -9,8 +9,8 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node server.js",
+		"build": "webpack --progress",
 		"watch": "webpack --progress --colors --watch",
-		"postinstall": "webpack --config webpack.config.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
