@@ -7,7 +7,7 @@ module.exports = {
 		filename: 'webpack.bundle.js',
 		path: path.resolve(__dirname, 'dist/js'),
 	},
-	watch: true,
+	//watch: true,
 	/*
 	plugins: [
 		new webpack.ProvidePlugin({
