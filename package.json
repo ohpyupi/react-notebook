@@ -9,9 +9,8 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node server.js",
-		"build": "webpack",
 		"watch": "webpack --progress --colors --watch",
-		"heroku-postbuild": "webpack",
+		"postinstall": "webpack -p",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
