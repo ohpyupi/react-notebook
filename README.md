@@ -18,10 +18,9 @@ React notebook app for learning purpose.
 * Signup has been fully integrated.
 * Login has been fully integrated.
 * Saves jwt when user logs in.
-
+* Error handling service integrated, usiting material snackbar.js
 
 ## To be updated
 * authentication middleware (just like angular service)
-* Notification handler that displays the status of http // ajax calls.
 * Injecting security header to Axios' ajax call.
 * Authentication system (~~login~~, ~~signup~~, logout, forgot password).

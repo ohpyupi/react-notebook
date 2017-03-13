@@ -13,6 +13,10 @@ module.exports = {
 			path: './.env',
 			safe: false,
 		}),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+		})
 	],
 	module: {
 		loaders: [

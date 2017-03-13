@@ -8,6 +8,8 @@ import Signup from './signup.component';
 import hFunc from '../../hFunc'
 import './auth.scss';
 
+import ErrorHandler from '../../services/error.service';
+
 export default class Auth extends React.Component {
 	constructor() {
 		super();
@@ -28,6 +30,7 @@ export default class Auth extends React.Component {
 	componentWillMount() {
 		this._$stateParams = this.props.resolves.$stateParams;
 		this._stateService = this.props.transition.router.stateService;
+		this._error = new ErrorHandler(this._stateService);
 	}
 	handleSignup(e) {
 		let vm = this;
@@ -53,10 +56,11 @@ export default class Auth extends React.Component {
 		} else {
 			vm.setState({error: {username: '', password: '', confirm: ''}});
 			axios.post('/api/users/login', user).then(res=>{
+				vm._error.flash(res.data.message, 'home');
+				/*
 				let token = res.data.token;
-				alert(res.data.message);
 				var payload = JSON.parse(window.atob(token.split('.')[1]));
-				console.log(payload);
+				*/
 			}).catch(err=>{
 				console.log(err.response.data);
 			});
