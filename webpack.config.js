@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	entry: './app/app.module.js',
@@ -7,27 +8,14 @@ module.exports = {
 		filename: 'webpack.bundle.js',
 		path: path.resolve(__dirname, 'dist/js'),
 	},
-	//watch: true,
-	/*
 	plugins: [
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery',
-		})
+		new Dotenv({
+			path: './.env',
+			safe: false,
+		}),
 	],
-	*/
 	module: {
 		loaders: [
-		/*
-		{
-			test: /\.jsx$/,
-			exclude: /(node_modules|bower_components)/,
-			loader: "babel-loader",
-			query: {
-				presets: ['es2015', 'react']
-			}
-		},
-		*/
 		{
 			test: /\.js$/,
 			exclude: /(node_modules|bower_components)/,

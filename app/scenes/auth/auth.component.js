@@ -53,9 +53,12 @@ export default class Auth extends React.Component {
 		} else {
 			vm.setState({error: {username: '', password: '', confirm: ''}});
 			axios.post('/api/users/login', user).then(res=>{
-				alert(res.data);
+				let token = res.data.token;
+				alert(res.data.message);
+				var payload = JSON.parse(window.atob(token.split('.')[1]));
+				console.log(payload);
 			}).catch(err=>{
-				console.log(err);
+				console.log(err.response.data);
 			});
 		}
 	}

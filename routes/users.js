@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
+const passport = require('passport');
 const User = require('../models/Users');
+const connection = require('../config/mysql')
 require('dotenv').load();
 
-const connection = mysql.createConnection({
-	host: process.env.MYSQL_HOST,
-	user: process.env.MYSQL_USER,
-	password: process.env.MYSQL_PASSWORD,
-	database: process.env.MYSQL_DATABASE,
-});
 
 connection.connect(err=>{
 	if (err) return console.error(`Error Connecting: ${err.stack}`);
@@ -34,11 +29,17 @@ router.post('/signup', (req, res, next)=>{
 });
 
 router.post('/login', (req, res, next)=>{
-	connection.query(`select * from users where username = '${req.body.username}'`, (err, results, fields)=>{
-		if (err) return res.status(401).json({message: "Invalid Username."});
-		let user = new User(results[0]);
-		if (!user.validPassword(req.body.password)) return res.status(401).json({message: "Invalid Password."});
-	});
+	passport.authenticate('local', (err, user, info)=>{
+		if (err) return next(err);
+		if (user) {
+			return res.json({
+				token: user.generateJWT(),
+				message: 'Welcome Back!',
+			});
+		} else {
+			return res.status(401).json(info);
+		}
+	})(req, res, next);
 });
 
 module.exports = router;

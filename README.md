@@ -16,9 +16,12 @@ React notebook app for learning purpose.
 * Create "users" table to MYSQL database.
 * Set primary key and unique key form 'users' table.
 * Signup has been fully integrated.
+* Login has been fully integrated.
+* Saves jwt when user logs in.
 
 
 ## To be updated
+* authentication middleware (just like angular service)
 * Notification handler that displays the status of http // ajax calls.
 * Injecting security header to Axios' ajax call.
-* Authentication system (login, ~~signup~~, logout, forgot password).
+* Authentication system (~~login~~, ~~signup~~, logout, forgot password).

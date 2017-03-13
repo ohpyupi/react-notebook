@@ -19474,9 +19474,12 @@ var Auth = function (_React$Component) {
 			} else {
 				vm.setState({ error: { username: '', password: '', confirm: '' } });
 				_axios2.default.post('/api/users/login', user).then(function (res) {
-					alert(res.data);
+					var token = res.data.token;
+					alert(res.data.message);
+					var payload = JSON.parse(window.atob(token.split('.')[1]));
+					console.log(payload);
 				}).catch(function (err) {
-					console.log(err);
+					console.log(err.response.data);
 				});
 			}
 		}
